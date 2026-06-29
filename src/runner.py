@@ -39,7 +39,23 @@ class MonteCarloRunner:
             energies.append(self.sim.energy())
             magnetizations.append(abs(self.sim.magnetization()))
 
-        return (
-            np.array(energies),
-            np.array(magnetizations),
+        energies = np.array(energies)
+        magnetizations = np.array(magnetizations)
+
+        mean_energy = energies.mean()
+        mean_magnetization = magnetizations.mean()
+
+        specific_heat = (
+            energies.var() / (self.sim.algorithm.temperature ** 2)
         )
+
+        susceptibility = (
+            magnetizations.var() / self.sim.algorithm.temperature
+        )
+
+        return {
+            "energy": float(mean_energy),
+            "magnetization": float(mean_magnetization),
+            "specific_heat": float(specific_heat),
+            "susceptibility": float(susceptibility),
+        }
