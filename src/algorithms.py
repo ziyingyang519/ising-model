@@ -26,33 +26,26 @@ class WolffAlgorithm:
         spins = self.lattice.spins
         N = self.lattice.size
 
-        i0 = np.random.randint(N)
-        j0 = np.random.randint(N)
+        seed = tuple(np.random.randint(N) for _ in range(self.lattice.dimension))
 
-        spin0 = spins[i0, j0]
+        spin0 = spins[seed]
 
         in_cluster = np.zeros_like(spins, dtype=bool)
-        in_cluster[i0, j0] = True
+        in_cluster[seed] = True
 
-        stack = [(i0, j0)]
+        stack = [seed]
 
         while stack:
-            i, j = stack.pop()
 
-            neighbors = [
-                (self.lattice.wrap_index(i + 1), j),
-                (self.lattice.wrap_index(i - 1), j),
-                (i, self.lattice.wrap_index(j + 1)),
-                (i, self.lattice.wrap_index(j - 1)),
-            ]
+            site = stack.pop()
 
-            for ni, nj in neighbors:
+            for neighbor in self.lattice.neighbors(site):
                 if (
-                    not in_cluster[ni, nj]
-                    and spins[ni, nj] == spin0
+                    not in_cluster[neighbor]
+                    and spins[neighbor] == spin0
                     and np.random.random() < self.bond_probability
                 ):
-                    in_cluster[ni, nj] = True
-                    stack.append((ni, nj))
+                    in_cluster[neighbor] = True
+                    stack.append(neighbor)
 
         spins[in_cluster] *= -1

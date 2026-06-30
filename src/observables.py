@@ -7,24 +7,29 @@ def energy(spins: np.ndarray) -> float:
     """
 
     lattice_size = spins.shape[0]
+    dimension = spins.ndim
 
     total_energy = 0.0
 
-    for i in range(lattice_size):
-        for j in range(lattice_size):
+    for site in np.ndindex(spins.shape):
 
-            spin = spins[i, j]
+        spin = spins[site]
+        neighbor_sum = 0
 
-            neighbors = (
-                spins[(i + 1) % lattice_size, j]
-                + spins[(i - 1) % lattice_size, j]
-                + spins[i, (j + 1) % lattice_size]
-                + spins[i, (j - 1) % lattice_size]
-            )
+        for axis in range(dimension):
 
-            total_energy += -spin * neighbors
+            positive = list(site)
+            negative = list(site)
 
-    return total_energy / 4.0
+            positive[axis] = (positive[axis] + 1) % lattice_size
+            negative[axis] = (negative[axis] - 1) % lattice_size
+
+            neighbor_sum += spins[tuple(positive)]
+            neighbor_sum += spins[tuple(negative)]
+
+        total_energy += -spin * neighbor_sum
+
+    return total_energy / (2 * dimension)
 
 
 def magnetization(spins: np.ndarray) -> float:

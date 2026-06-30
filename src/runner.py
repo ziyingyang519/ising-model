@@ -9,6 +9,7 @@ class MonteCarloRunner:
     def __init__(
         self,
         lattice_size: int,
+        dimension: int,
         temperature: float,
         equilibration_steps: int,
         measurement_steps: int,
@@ -17,7 +18,7 @@ class MonteCarloRunner:
         self.sim = Simulation(
             lattice=IsingLattice(
                 size=lattice_size,
-                dimension=2,
+                dimension=dimension,
             ),
             temperature=temperature,
         )

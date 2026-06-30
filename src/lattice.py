@@ -38,3 +38,26 @@ class IsingLattice:
         """
 
         return index % self.size
+    
+    def neighbors(
+        self,
+        site: tuple[int, ...],
+    ) -> list[tuple[int, ...]]:
+        """
+        Return nearest neighbors of a lattice site.
+        """
+
+        neighbors = []
+
+        for axis in range(self.dimension):
+
+            positive = list(site)
+            negative = list(site)
+
+            positive[axis] = self.wrap_index(positive[axis] + 1)
+            negative[axis] = self.wrap_index(negative[axis] - 1)
+
+            neighbors.append(tuple(positive))
+            neighbors.append(tuple(negative))
+
+        return neighbors

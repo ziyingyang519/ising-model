@@ -1,6 +1,6 @@
-# Ising Model Monte Carlo Simulation
+# 2D / 3D Ising Model Monte Carlo Simulation
 
-A modular Python implementation of the **2D Ising Model** using the **Wolff Cluster Algorithm** for Monte Carlo simulations of phase transitions.
+A modular Python implementation of **2D and 3D Ising Models** using the **Wolff Cluster Algorithm** for Monte Carlo simulations of phase transitions.
 
 ---
 
@@ -8,15 +8,16 @@ A modular Python implementation of the **2D Ising Model** using the **Wolff Clus
 
 The Ising model is one of the most important models in statistical physics for studying ferromagnetism and critical phenomena.
 
-This project implements a two-dimensional square-lattice Ising model with periodic boundary conditions and the Wolff Cluster Algorithm, which efficiently reduces critical slowing down near the phase transition.
+This project implements two- and three-dimensional Ising models with periodic boundary conditions and the Wolff Cluster Algorithm, which efficiently reduces critical slowing down near the phase transition.
 
 ---
 
 ## Features
 
-- 2D square lattice Ising model
+- 2D and 3D Ising models
 - Wolff Cluster Monte Carlo algorithm
 - Periodic boundary conditions
+- Configurable lattice dimension
 - Temperature sweep simulation
 - Automatic calculation of
   - Energy
@@ -65,6 +66,12 @@ pip install -r requirements.txt
 
 ```bash
 python main.py
+The lattice dimension can be selected by setting the `dimension` parameter in `main.py`.
+
+Example:
+
+- `dimension=2` → 2D Ising model
+- `dimension=3` → 3D Ising model
 ```
 
 Running the program automatically:
@@ -122,7 +129,6 @@ The Wolff Cluster Algorithm greatly improves sampling efficiency near the critic
 
 ## Future Work
 
-- 3D Ising Model
 - Metropolis Algorithm
 - Finite-size scaling analysis
 - Binder cumulant

@@ -17,10 +17,11 @@ def main():
         print(f"Running T = {temperature:.2f} K")
 
         runner = MonteCarloRunner(
-            lattice_size=32,
+            lattice_size=16,
+            dimension=3,
             temperature=temperature,
-            equilibration_steps=1000,
-            measurement_steps=5000,
+            equilibration_steps=200,
+            measurement_steps=500,
         )
 
         result = runner.run()
