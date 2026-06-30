@@ -85,6 +85,12 @@ Running the program automatically:
 
 ## Results
 
+The simulated critical temperature is approximately 4.9 (simulation units), estimated from the peaks of the specific heat and magnetic susceptibility. This is reasonably close to the accepted value for the three-dimensional Ising model (T
+c
+	​
+
+≈4.51), given the finite lattice size and limited Monte Carlo sampling.
+
 ### Energy
 
 ![Energy](figures/energy.png)
