@@ -144,9 +144,9 @@ The Wolff Cluster Algorithm greatly improves sampling efficiency near the critic
 
 ## Author
 
-**Tzu-Ying Yang**
+**Zi-Ying Yang**
 
-Department of Bio-Industrial Mechatronics Engineering
+Department of Biomechatronics Engineering
 
 National Taiwan University
 
