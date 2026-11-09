@@ -119,15 +119,15 @@ c
 
 The Ising model describes interacting magnetic spins
 
-\[
+$
 s_i=\pm1
-\]
+$
 
 with Hamiltonian
 
-\[
-H=-J\sum_{\langle i,j\rangle}s_is_j
-\]
+$$H = -J \sum_{\langle i,j \rangle} s_i s_j, \quad s_i = \pm 1$$
+
+Estimated critical temperature: $T_c \approx 4.9\ J/k_B$
 
 The Wolff Cluster Algorithm greatly improves sampling efficiency near the critical temperature by flipping clusters of aligned spins instead of individual spins.
 
